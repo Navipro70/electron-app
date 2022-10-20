@@ -1,3 +1,6 @@
+const { contextBridge, ipcRenderer } = require("electron");
+const { AppIpcEvents } = require("./constants");
+
 window.addEventListener("DOMContentLoaded", () => {
  const replaceText = (selector, text) => {
   const element = document.getElementById(selector);
@@ -8,4 +11,8 @@ window.addEventListener("DOMContentLoaded", () => {
  ["chrome", "node", "electron"].forEach((tool) => {
   replaceText(`${tool}-version`, process.versions[tool]);
  });
+});
+
+contextBridge.exposeInMainWorld("electronAPI", {
+ getImage: (callback) => ipcRenderer.on(AppIpcEvents.getImage, callback),
 });

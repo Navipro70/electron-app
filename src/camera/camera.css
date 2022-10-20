@@ -1,0 +1,36 @@
+*,
+*::before,
+*::after {
+ font-family: "Roboto", sans-serif;
+ box-sizing: border-box;
+ margin: 0;
+ padding: 0;
+ border: 0;
+}
+
+body {
+ min-height: 100vh;
+ scroll-behavior: smooth;
+ text-rendering: optimizeSpeed;
+ line-height: 1.5;
+}
+
+.container {
+ display: flex;
+ flex: 1;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
+ margin: 20px 0;
+}
+
+.camera {
+ margin: 20px 0;
+}
+
+.button {
+ background: #9f2b68;
+ padding: 8px 12px;
+ border-radius: 8;
+ color: white;
+}

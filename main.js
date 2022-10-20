@@ -1,16 +1,23 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
+require("./menu");
+const { AppIpcEvents } = require("./src/app/constants");
+const { CameraIpcEvents } = require("./src/camera/constants");
 
 const createWindow = () => {
- const win = new BrowserWindow({
+ const getAppFilePath = (file) => path.join(__dirname, "src", "app", file);
+
+ const mainWindow = new BrowserWindow({
   width: 800,
-  height: 500,
-  webPreferences: {
-   preload: path.join(__dirname, "preload.js"),
-  },
+  height: 800,
+  webPreferences: { preload: getAppFilePath("preload.js") },
  });
 
- win.loadFile("index.html");
+ ipcMain.on(CameraIpcEvents.sendImage, (_, data) => {
+  mainWindow.webContents.send(AppIpcEvents.getImage, data);
+ });
+
+ mainWindow.loadFile(getAppFilePath("app.html"));
 };
 
 app.whenReady().then(() => {

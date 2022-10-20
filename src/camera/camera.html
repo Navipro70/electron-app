@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8" />
+  <meta
+   http-equiv="Content-Security-Policy"
+   content="img-src 'self' data:; default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self'"
+  />
+  <link rel="stylesheet" href="camera.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+   href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+   rel="stylesheet"
+  />
+  <title>Camera</title>
+ </head>
+ <body>
+  <div class="container">
+   <h1>Camera access</h1>
+   <video autoplay id="camera" class="camera" width="600" height="600"></video>
+   <button class="button" id="button">Capture image</button>
+  </div>
+ </body>
+
+ <script src="camera.js"></script>
+</html>
