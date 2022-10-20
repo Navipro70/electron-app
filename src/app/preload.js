@@ -1,5 +1,8 @@
 const { contextBridge, ipcRenderer } = require("electron");
-const { AppIpcEvents } = require("./constants");
+
+const AppIpcEvents = Object.freeze({
+ getImage: "AppIpcEvents-get-image",
+});
 
 window.addEventListener("DOMContentLoaded", () => {
  const replaceText = (selector, text) => {

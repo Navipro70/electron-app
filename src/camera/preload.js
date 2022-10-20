@@ -1,6 +1,9 @@
 const { contextBridge, ipcRenderer } = require("electron");
 
-const { CameraIpcEvents } = require("./constants");
+const CameraIpcEvents = Object.freeze({
+ sendImage: "cameraICPEvent-send-image",
+ closeWindow: "cameraICPEvent-close-window",
+});
 
 contextBridge.exposeInMainWorld("electronAPI", {
  sendImage: (imageData) =>
